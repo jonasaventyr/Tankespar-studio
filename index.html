@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tankespår Studio</title>
+  <meta name="theme-color" content="#0b0a08" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tankespår Studio" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
+  <link rel="icon" href="assets/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <img src="assets/logo.jpg" class="logo" alt="Tankespår logotyp" />
+      <h1>Tankespår Studio</h1>
+      <p class="tagline">Idéhistoria med Jonas</p>
+      <nav>
+        <button data-view="hem" class="active">⌂ Hem</button>
+        <button data-view="skriv">📖 Skriv</button>
+        <button data-view="skapa">🎥 Skapa</button>
+        <button data-view="forska">🔎 Forska</button>
+        <button data-view="driv">💼 Driv</button>
+        <button data-view="idebank">💡 Idébank</button>
+      </nav>
+      <blockquote>Idéer är som spår i snön.<br>Följ dem – de leder någonstans.</blockquote>
+      <button id="installApp" class="install hidden">Installera appen</button>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-text">
+          <h2>Välkommen tillbaka, Jonas.</h2>
+          <p>Vad vill du skapa idag?</p>
+        </div>
+      </header>
+
+      <section id="hem" class="view active-view">
+        <div class="cards four">
+          <button class="bigcard" data-view="skriv"><span>📖</span><h3>Skriv</h3><p>Böcker, manus och berättelser.</p></button>
+          <button class="bigcard green" data-view="skapa"><span>🎥</span><h3>Skapa</h3><p>YouTube, föreläsningar och kommunikation.</p></button>
+          <button class="bigcard blue" data-view="forska"><span>🔎</span><h3>Forska</h3><p>Research, källor och masteruppsats.</p></button>
+          <button class="bigcard gold" data-view="driv"><span>💼</span><h3>Driv</h3><p>Affärsplan, ekonomi och verksamhet.</p></button>
+        </div>
+        <div class="grid">
+          <article class="panel">
+            <h3>Dagens fokus</h3>
+            <input id="focusInput" placeholder="Skriv dagens viktigaste uppgift" />
+            <div class="progress"><span id="focusBar"></span></div>
+            <button id="focusDone">Markera framsteg</button>
+          </article>
+          <article class="panel">
+            <h3>Kommande</h3>
+            <ul id="upcoming"><li>Tankespår – spela in avsnitt</li><li>Stipendium – förbered ansökan</li><li>Föreläsning – planering</li></ul>
+          </article>
+          <article class="panel quote">
+            <h3>Dagens citat</h3>
+            <p>Det är inte tiden som fattas. Det är riktningen.</p>
+          </article>
+          <article class="panel app-panel">
+            <h3>Mobilapp</h3>
+            <p>Tankespår Studio kan nu installeras på mobilen och fungera offline efter första öppningen.</p>
+            <button id="installAppHome" class="install hidden">Installera på mobilen</button>
+            <p class="small">På Android: öppna sidan i Chrome och välj “Installera app” eller “Lägg till på startskärmen”. På iPhone: öppna i Safari och välj Dela → Lägg till på hemskärmen.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skriv" class="view">
+        <h2>Skriv</h2>
+        <div class="project-list">
+          <article><h3>Selma Lagerlöf och kroppen</h3><p>Essäbok / forskning. Status: pågående.</p><progress value="65" max="100"></progress></article>
+          <article><h3>När tiden suddas ut</h3><p>Alzheimerboken. Status: planering och minnesmaterial.</p><progress value="30" max="100"></progress></article>
+          <article><h3>1990-talet</h3><p>Roman/berättelse om övergången till en ny tid.</p><progress value="15" max="100"></progress></article>
+        </div>
+      </section>
+
+      <section id="skapa" class="view">
+        <h2>Skapa</h2>
+        <div class="panel"><h3>Tankespår YouTube</h3><textarea id="videoIdeas" placeholder="Skriv idéer till avsnitt här..."></textarea></div>
+        <div class="panel"><h3>Föreläsningar</h3><textarea id="talkIdeas" placeholder="Ämnen, arrangörer, upplägg..."></textarea></div>
+      </section>
+
+      <section id="forska" class="view">
+        <h2>Forska</h2>
+        <div class="panel"><h3>Aktuellt forskningsspår</h3><p>Selma Lagerlöf, kroppslig erfarenhet, funktionshinderhistoria och normalitet.</p></div>
+        <div class="panel"><h3>Källor att följa upp</h3><textarea id="sources" placeholder="Lägg in källor, citat och frågor..."></textarea></div>
+      </section>
+
+      <section id="driv" class="view">
+        <h2>Driv – interaktiv affärsplan</h2>
+        <div class="business-grid">
+          <article class="panel"><h3>Vision</h3><textarea id="vision">Tankespår utvecklar, producerar och sprider berättelser och idéer genom böcker, film, föreläsningar och digitala medier.</textarea></article>
+          <article class="panel"><h3>Intäktsben</h3><label><input type="checkbox"> Böcker</label><label><input type="checkbox"> Föreläsningar</label><label><input type="checkbox"> YouTube</label><label><input type="checkbox"> Stipendier</label><label><input type="checkbox"> Konsultuppdrag</label></article>
+          <article class="panel"><h3>Mål 2026</h3><textarea id="goals">Slutföra masteruppsatsen. Bygga Tankespår Studio v1. Påbörja Alzheimerboken. Skapa publiceringsrutin för Tankespår.</textarea></article>
+          <article class="panel"><h3>Budgetskiss</h3><div class="budget-row"><span>Intäktsmål</span><input id="income" type="number" value="20000"></div><div class="budget-row"><span>Kostnader</span><input id="costs" type="number" value="8000"></div><strong>Prognos: <span id="result"></span> kr</strong></article>
+        </div>
+      </section>
+
+      <section id="idebank" class="view">
+        <h2>Idébank</h2>
+        <div class="panel"><textarea id="ideas" placeholder="Skriv idéer här. Allt sparas i webbläsaren."></textarea></div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
