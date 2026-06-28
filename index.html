@@ -21,13 +21,14 @@
       <p class="tagline">Idéhistoria med Jonas</p>
       <nav>
         <button data-view="hem" class="active">⌂ Hem</button>
+        <button data-view="tankefangare">💡 Tankefångaren</button>
         <button data-view="skriv">📖 Skriv</button>
         <button data-view="skapa">🎥 Skapa</button>
         <button data-view="forska">🔎 Forska</button>
         <button data-view="driv">💼 Driv</button>
-        <button data-view="idebank">💡 Idébank</button>
+        <button data-view="idebank">🗃️ Idébank</button>
       </nav>
-      <blockquote>Idéer är som spår i snön.<br>Följ dem – de leder någonstans.</blockquote>
+      <blockquote>Fånga gnistan först.<br>Sortera den senare.</blockquote>
       <button id="installApp" class="install hidden">Installera appen</button>
     </aside>
 
@@ -40,6 +41,14 @@
       </header>
 
       <section id="hem" class="view active-view">
+        <div class="quick-capture panel">
+          <div>
+            <h3>Tankefångaren</h3>
+            <p>Skriv av dig snabbt. Inga krav, ingen sortering, ingen bedömning.</p>
+          </div>
+          <button class="primary big-action" data-view="tankefangare">💡 Fånga tanken</button>
+        </div>
+
         <div class="cards four">
           <button class="bigcard" data-view="skriv"><span>📖</span><h3>Skriv</h3><p>Böcker, manus och berättelser.</p></button>
           <button class="bigcard green" data-view="skapa"><span>🎥</span><h3>Skapa</h3><p>YouTube, föreläsningar och kommunikation.</p></button>
@@ -54,8 +63,9 @@
             <button id="focusDone">Markera framsteg</button>
           </article>
           <article class="panel">
-            <h3>Kommande</h3>
-            <ul id="upcoming"><li>Tankespår – spela in avsnitt</li><li>Stipendium – förbered ansökan</li><li>Föreläsning – planering</li></ul>
+            <h3>Osorterade tankar</h3>
+            <p class="count"><span id="thoughtCountHome">0</span> sparade tankar väntar på dig.</p>
+            <button data-view="tankefangare">Öppna Tankefångaren</button>
           </article>
           <article class="panel quote">
             <h3>Dagens citat</h3>
@@ -63,9 +73,54 @@
           </article>
           <article class="panel app-panel">
             <h3>Mobilapp</h3>
-            <p>Tankespår Studio kan nu installeras på mobilen och fungera offline efter första öppningen.</p>
+            <p>Tankespår Studio kan installeras på mobilen och fungera offline efter första öppningen.</p>
             <button id="installAppHome" class="install hidden">Installera på mobilen</button>
-            <p class="small">På Android: öppna sidan i Chrome och välj “Installera app” eller “Lägg till på startskärmen”. På iPhone: öppna i Safari och välj Dela → Lägg till på hemskärmen.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="tankefangare" class="view">
+        <div class="section-title">
+          <h2>💡 Tankefångaren</h2>
+          <p>För snabba, halvgalna, lovande eller helt omöjliga idéer. Här ska tröskeln vara låg.</p>
+        </div>
+
+        <div class="capture-layout">
+          <article class="panel capture-box">
+            <h3>Vad tänkte du på?</h3>
+            <textarea id="thoughtText" class="large-textarea" placeholder="Skriv innan tanken försvinner..."></textarea>
+            <div class="capture-controls">
+              <select id="thoughtCategory" aria-label="Kategori">
+                <option value="Osorterad">Osorterad</option>
+                <option value="Selma">Selma</option>
+                <option value="Alzheimerboken">Alzheimerboken</option>
+                <option value="Tankespår YouTube">Tankespår YouTube</option>
+                <option value="90-talet">90-talet</option>
+                <option value="Driv / företag">Driv / företag</option>
+                <option value="Annat">Annat</option>
+              </select>
+              <button id="saveThought" class="primary">Spara tanke</button>
+            </div>
+            <p class="small">Allt sparas lokalt i den här webbläsaren. Senare kan vi lägga till synk mellan mobil och dator.</p>
+          </article>
+
+          <article class="panel">
+            <h3>Senaste tankarna</h3>
+            <div class="toolbar">
+              <select id="thoughtFilter" aria-label="Filtrera tankar">
+                <option value="Alla">Alla</option>
+                <option value="Osorterad">Osorterad</option>
+                <option value="Selma">Selma</option>
+                <option value="Alzheimerboken">Alzheimerboken</option>
+                <option value="Tankespår YouTube">Tankespår YouTube</option>
+                <option value="90-talet">90-talet</option>
+                <option value="Driv / företag">Driv / företag</option>
+                <option value="Annat">Annat</option>
+              </select>
+              <button id="exportThoughts">Exportera .txt</button>
+              <button id="clearThoughts" class="danger">Rensa alla</button>
+            </div>
+            <div id="thoughtList" class="thought-list"></div>
           </article>
         </div>
       </section>
